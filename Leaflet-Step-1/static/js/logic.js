@@ -1,4 +1,4 @@
-let queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson";
+let queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 let mapZoomLevel = 5;
 let sanDiegoCoords = [37, -120]
 

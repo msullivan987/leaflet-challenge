@@ -1,4 +1,4 @@
-let queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson";
+let queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 let geoJsonLink = "static/geojson/PB2002_boundaries.json";
 let mapZoomLevel = 5;
 let sanDiegoCoords = [37, -120]
@@ -42,8 +42,6 @@ function createMap(earthquakes, faultLayer) {
         "Outdoor Map": outdoorMap
     };
 
-
-
     //creating the map object
     let map = L.map("map", {
         center: sanDiegoCoords,
@@ -79,7 +77,7 @@ function createMap(earthquakes, faultLayer) {
         return div;
     };
     legend.addTo(map);
-}
+};
 
 //color setting function for earthquake circles and legend
 function getColor(d) {
@@ -125,12 +123,12 @@ function createMarkers(response) {
 }
 
 function createFaultLayer(faultresponse) {
-return L.geoJson(faultresponse, {
-            style: {
-                color: "orange",
-                weight: 2
-            }
-        });
+    return L.geoJson(faultresponse, {
+        style: {
+            color: "orange",
+            weight: 2
+        }
+    });
 }
 
 //perform the API call to get the eathquake info and call the createMarkers function when complete
@@ -141,8 +139,6 @@ d3.json(queryUrl, earthquakeResponse => {
 
     d3.json(geoJsonLink, faultResponse => {
         const faultLayer = createFaultLayer(faultResponse);
-    
         createMap(earthquakeLayer, faultLayer)
     });
-    
 });
